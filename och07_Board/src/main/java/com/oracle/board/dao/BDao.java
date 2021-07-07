@@ -272,4 +272,99 @@ public class BDao {
 		}
 		return dto;
 	}	
+	
+	public void reply(String bId, String bName, String bTitle, String bContent, String bGroup,
+			String bStep, String bIndent) {
+		
+		replyShape(bGroup, bStep);
+		
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		
+		try {
+			conn = dataSource.getConnection();
+			String query = "insert into mvc_board (bId, bName, bTitle, bContent, bGroup, bStep, bIndent)"
+					+ " values (mvc_board_seq.nextval, ?, ?, ?, ?, ?, ?)";
+			
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, bName);
+			pstmt.setString(2, bTitle);
+			pstmt.setString(3, bContent);
+			pstmt.setInt(4, Integer.parseInt(bGroup));
+			pstmt.setInt(5, Integer.parseInt(bStep) + 1);
+			pstmt.setInt(6, Integer.parseInt(bIndent) + 1);
+			
+			int rn = pstmt.executeUpdate();
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		} finally {
+			try {
+				if (pstmt != null)
+					pstmt.close();
+				if (conn != null)
+					conn.close();
+			} catch (Exception e2) {
+				// TODO: handle exception
+				e2.printStackTrace();
+			}
+		}
+	}
+	
+	private void replyShape(String strGroup, String strStep) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		
+		try {
+			conn = dataSource.getConnection();
+			String query = "update mvc_board set bStep = bStep + 1 where bGroup = ? and bStep > ?";
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, Integer.parseInt(strGroup));
+			pstmt.setInt(2, Integer.parseInt(strStep));
+			
+			int rn = pstmt.executeUpdate();
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		} finally {
+			try {
+				if (pstmt != null)
+					pstmt.close();
+				if (conn != null)
+					conn.close();
+			} catch (Exception e2) {
+				// TODO: handle exception
+				e2.printStackTrace();
+			}
+		}
+	}
+	
+	public void delete(String bId) {
+		
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		
+		try {
+			conn = dataSource.getConnection();
+			String query = "delete from mvc_board where bId = ?";
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, Integer.parseInt(bId));
+			
+			int rn = pstmt.executeUpdate();
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		} finally {
+			try {
+				if (pstmt != null)
+					pstmt.close();
+				if (conn != null)
+					conn.close();
+			} catch (Exception e2) {
+				// TODO: handle exception
+				e2.printStackTrace();
+			}
+		}
+	
+	}
 }
