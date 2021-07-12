@@ -1,0 +1,26 @@
+server:
+  port: 8584
+  
+
+spring:
+  # Oracle Connect
+  datasource:
+    driver-class-name: oracle.jdbc.driver.OracleDriver
+    url: jdbc:oracle:thin:@localhost:1521/xe
+    username: scott3
+    password: tiger
+
+  # JPA SQL Show
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: none #create
+    properties:
+      hibernate:
+      show_sql: true
+      format_sql: true
+
+logging:
+  level:
+    org.hibernate.SQL: debug
+    # org.hibernate.type: trace

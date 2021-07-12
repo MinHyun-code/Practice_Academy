@@ -1,5 +1,8 @@
 package com.oracle.oBootJpa02.service;
 
+import java.util.List;
+import java.util.Optional;
+
 import javax.transaction.Transactional;
 
 import com.oracle.oBootJpa02.domain.Member;
@@ -22,5 +25,28 @@ public class MemberService {
 	public Member join(Member member) {
 		memberRepository.save(member);
 		return member;
+	}
+	
+	// 전체 회원 조회
+	public List<Member> getListAllMember(){
+		List<Member> listMember	= memberRepository.findAll();
+		return listMember;  
+	}
+	 
+	// 회원 상세 조회
+	public Optional<Member> findByMember(Long memberId){
+		Optional<Member> member = memberRepository.findByMember(memberId);
+		return member;
+	}
+	
+	// 회원 수정
+	public void memberUpdate(Member member) {
+		memberRepository.updateByMember(member);
+		return;
+	}
+	
+	public List<Member> getListSearchMember(String searchName){
+		List<Member> listMember = memberRepository.findByNames(searchName);
+		return listMember;
 	}
 }

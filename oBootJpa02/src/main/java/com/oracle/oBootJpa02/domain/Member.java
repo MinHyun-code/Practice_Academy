@@ -33,9 +33,21 @@ public class Member {
 	
 	// Update시->Team에 저장할 teamname 임시저장, TBL에는 존재 안 함
 	@Transient
-	private String teamname;
+	private String teamname;	
+	
+	@Transient
+	@Column(name = "team_id")
+	private Long teamid;
 	
 	
+	public Long getTeamid() {
+		return teamid;
+	}
+
+	public void setTeamid(Long teamid) {
+		this.teamid = teamid;
+	}
+
 	public Team getTeam() {
 		return team;
 	}
