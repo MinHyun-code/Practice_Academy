@@ -9,11 +9,11 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.oracle</groupId>
-	<artifactId>oBootMybatis03</artifactId>
+	<artifactId>bootMyBatis03</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>war</packaging>
-	<name>oBootMybatis03</name>
-	<description>oBootMybatis03 project for Spring Boot</description>
+	<name>obootMybatis03</name>
+	<description>obootMybatis03 project for Spring Boot</description>
 
 	<properties>
 		<java.version>11</java.version>
@@ -25,7 +25,7 @@
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
 		
-        <!-- ORM  mybatis -->
+        <!-- ORM  mybatis  -->
 		<dependency>
 			<groupId>org.mybatis.spring.boot</groupId>
 			<artifactId>mybatis-spring-boot-starter</artifactId>
@@ -64,8 +64,8 @@
 			<scope>runtime</scope>
 		</dependency>
  -->      
-        <!-- oracle 라이브러리 -->
-        <dependency> 
+        <!-- oracle 라이브러리  -->
+        <dependency>
             <groupId>oracle.jdbc</groupId>
             <artifactId>OracleDriver</artifactId>
             <version>11.2.0.3</version>

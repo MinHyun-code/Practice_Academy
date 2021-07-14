@@ -1,12 +1,13 @@
 package com.oracle.oBootMybatis03.model;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
-@Data
+@Getter
+@Setter
 public class Dept {
-
-	private int deptno;
+	private int    deptno;
 	private String dname;
 	private String loc;
-
+	
 }
