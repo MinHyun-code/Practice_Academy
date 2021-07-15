@@ -37,7 +37,7 @@ public class UploadController {
 	
 	@RequestMapping(value="uploadForm", method = RequestMethod.POST)
 	public String uploadForm (HttpServletRequest request, MultipartFile file1, Model model) throws IOException {
-		String uploadPath = (request.getSession().getServletContext().getRealPath("/upaload/"));
+		String uploadPath = (request.getSession().getServletContext().getRealPath("/upload/"));
 		logger.info("originalName : " + file1.getOriginalFilename());
 		logger.info("size : " + file1.getSize());
 		logger.info("contentType : " + file1.getContentType());
@@ -46,7 +46,7 @@ public class UploadController {
 		model.addAttribute("savedName", savedName);
 		return "uploadResult";	
 	}
-	
+		
 	private String uploadFile(String originalName, byte[] fileData, String uploadPath) throws IOException {
 		UUID uid = UUID.randomUUID();
 		// requestPath = requestPath + "/resources/image";

@@ -10,7 +10,11 @@
 <%
 // 	response.sendRedirect("list");
 // 	response.sendRedirect("listEmpDept");
-	response.sendRedirect("upLoadFormStart");
+// 	response.sendRedirect("upLoadFormStart");
+// 	response.sendRedirect("writeDeptIn");
+// 	response.sendRedirect("writeDeptCursor");
+// 	response.sendRedirect("memberJpa/new"); 		//JPA
+	response.sendRedirect("members"); 				//JPA
 %>
 </body>
 </html>

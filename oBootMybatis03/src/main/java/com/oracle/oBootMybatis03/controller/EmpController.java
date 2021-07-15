@@ -1,5 +1,6 @@
 package com.oracle.oBootMybatis03.controller;
 
+import java.util.HashMap;
 import java.util.List;
 
 import javax.activation.DataSource;
@@ -19,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.oracle.oBootMybatis03.model.Dept;
+import com.oracle.oBootMybatis03.model.DeptVO;
 import com.oracle.oBootMybatis03.model.Emp;
 import com.oracle.oBootMybatis03.model.EmpDept;
 import com.oracle.oBootMybatis03.service.EmpService;
@@ -161,5 +163,33 @@ public class EmpController {
 		return "mailResult";
 	}
 	
+	@RequestMapping(value="writeDeptIn", method = RequestMethod.GET)
+	public String writeDeptIn(Model model) {
+		System.out.println("writeDeptIn Start...");
+		return "writeDept3";
+	}
     
+	@PostMapping(value="writeDept")
+	public String writeDept(DeptVO deptVO, Model model) {
+		es.insertDept(deptVO);
+		if(deptVO == null) {
+			System.out.println("deptVO null");
+		} else {
+			model.addAttribute("mgr", "정상 입력 되었습니다.");
+			model.addAttribute("dept", deptVO);
+		}
+		return "writeDept3";
+	}
+	
+	@GetMapping(value="writeDeptCursor")
+	public String writeDeptCursor(Model model) {
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		map.put("sDeptno", 10);
+		map.put("eDeptno", 80);
+		es.selListDept(map);
+		List<Dept> deptList = (List<Dept>) map.get("dept");
+		model.addAttribute("deptList", deptList);
+		 
+		return "writeDeptCursor";
+	}
 }

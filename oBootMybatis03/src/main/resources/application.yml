@@ -15,15 +15,15 @@ spring:
       ddl-auto: none # create
     properties:
       hibernate:
-      show_sql: true
-      format_sql: true
+        show_sql: true
+        format_sql: true
           
   # gmail Transfer
   mail: 
     host: smtp.gmail.com
     port: 587
     username: riven3069@gmail.com
-    password: alsekfvod2*
+    password: Alsekfvod2*
     properties: 
       mail: 
         smtp: 
@@ -36,6 +36,10 @@ spring:
       prefix: /WEB-INF/views/
       suffix: .jsp    
  
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 10MB
 # Mybatis 
 mybatis:
   # dto Location
